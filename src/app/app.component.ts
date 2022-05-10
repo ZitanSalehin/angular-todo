@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Todo } from './Todo';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'todo';
+  todos:Todo[]=[];
+  newTodo:string;
+
+  saveTodo(){
+    if(this.newTodo){
+      let todo = new Todo();
+      todo.name=this.newTodo;
+      todo.isCompleted=true
+      this.todos.push(todo);
+      this.newTodo='';
+    }
+  }
 }
